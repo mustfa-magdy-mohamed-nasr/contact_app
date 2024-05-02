@@ -10,8 +10,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 
 void main() async {
+    await Hive.initFlutter();
+
   Bloc.observer = SimpleObserver();
-  await Hive.initFlutter();
   Hive.registerAdapter(ContactModelAdapter());
 
   await Hive.openBox<ContactModel>('contact');
@@ -24,21 +25,16 @@ class ContactApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (context) => MemberCubit()),
-      ],
-      child: MaterialApp(
-        // theme: ThemeData.dark(),
-        title: 'Contact App',
-        initialRoute: '/',
-        routes: {
-          '/': (context) => const ContactView(),
-          '/page1': (context) => const AddMemberView(),
-          '/page2': (context) => const DetalisView(),
-          // '/page2': (context) => Page2(),
-        },
-      ),
+    return MaterialApp(
+      // theme: ThemeData.dark(),
+      title: 'Contact App',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const ContactView(),
+        '/page1': (context) => const AddMemberView(),
+        '/page2': (context) => const DetalisView(),
+        // '/page2': (context) => Page2(),
+      },
     );
   }
 }

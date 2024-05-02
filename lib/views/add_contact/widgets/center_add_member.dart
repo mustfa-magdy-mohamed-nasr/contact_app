@@ -14,7 +14,7 @@ class CenterAddMember extends StatelessWidget {
     return BlocConsumer<AddMemberCubit, AddMemberState>(
       listener: (context, state) {
         if (state is AddMemberFailuer) {
-          print("falier${state.errMessadge}");
+          print("falier errrrrrrrrrrrrr${state.errMessadge}");
         }
         if (state is AddMemberSuccess) {
           Navigator.pop(context);

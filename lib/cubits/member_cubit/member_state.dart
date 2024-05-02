@@ -5,16 +5,10 @@ sealed class MemberState {}
 
 final class MemberInitial extends MemberState {}
 
-final class MemberLodeing extends MemberState {}
+// final class MemberLodeing extends MemberState {}
 
-final class MemberSuccess extends MemberState {
-  final List<ContactModel> member;
+// final class MemberSuccess extends MemberState {
+//   final List<ContactModel> member;
 
-  MemberSuccess({this.member = const []});
-}
-
-final class MemberFailuer extends MemberState {
-  final String errMassage;
-
-  MemberFailuer({required this.errMassage});
-}
+//   MemberSuccess({required this.member});
+// }

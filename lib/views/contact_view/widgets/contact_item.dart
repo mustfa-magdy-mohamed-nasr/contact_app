@@ -1,10 +1,12 @@
+import 'package:contact_app/model/contact_model.dart';
 import 'package:flutter/material.dart';
 
 class ContactItem extends StatelessWidget {
   const ContactItem({
     super.key,
+    required this.data,
   });
-
+  final ContactModel data;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -20,15 +22,15 @@ class ContactItem extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
           ),
         ),
-        title: const Text("title"),
+        title: Text(data.name),
         titleTextStyle: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 18,
           color: Colors.black,
         ),
-        subtitle: const Text(
-          "fanction",
-          style: TextStyle(color: Colors.grey, inherit: false),
+        subtitle: Text(
+          data.fanction,
+          style: const TextStyle(color: Colors.grey, inherit: false),
         ),
       ),
     );

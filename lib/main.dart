@@ -22,7 +22,7 @@ class ContactApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const ContactView(),
-        '/page1': (context) => AddMemberView(),
+        '/page1': (context) => const AddMemberView(),
         '/page2': (context) => const DetalisView(),
         // '/page2': (context) => Page2(),
       },

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 
 class CustomButtm extends StatelessWidget {
-  CustomButtm({
-    super.key, required this.color, required this.name,required this.onTap
-  });
- final VoidCallback onTap; 
-   final Color color;
+  const CustomButtm(
+      {super.key, required this.color, required this.name, this.onTap});
+  final void Function()? onTap;
+  final Color color;
   final String name;
   @override
   Widget build(BuildContext context) {
@@ -17,9 +16,9 @@ class CustomButtm extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
             color: color, borderRadius: BorderRadius.circular(18)),
-        child:  Text(
+        child: Text(
           name,
-          style: TextStyle(
+          style: const TextStyle(
               fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ),

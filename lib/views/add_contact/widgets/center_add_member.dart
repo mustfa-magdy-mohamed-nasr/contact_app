@@ -1,46 +1,69 @@
 import 'package:contact_app/views/add_contact/widgets/custom_text_field.dart';
+import 'package:contact_app/views/add_contact/widgets/end_add_member.dart';
 import 'package:flutter/material.dart';
 
-class CenterAddMember extends StatelessWidget {
+class CenterAddMember extends StatefulWidget {
   const CenterAddMember({
     super.key,
-    required this.title,
-    required this.phone,
-    required this.fanction,
-    required this.email,
   });
 
-  final TextEditingController title;
-  final TextEditingController phone;
-  final TextEditingController fanction;
-  final TextEditingController email;
+  @override
+  State<CenterAddMember> createState() => _CenterAddMemberState();
+}
 
+class _CenterAddMemberState extends State<CenterAddMember> {
+  final GlobalKey<FormState> formKey = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  String? name, email, fanction, phone;
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        CustomTextField(
-          fanction: title,
-          icon: Icons.person_3_outlined,
-          labelText: 'Name',
-        ),
-        CustomTextField(
-          fanction: phone,
-          icon: Icons.phone_enabled_outlined,
-          labelText: 'Phone',
-        ),
-        CustomTextField(
-          fanction: fanction,
-          icon: Icons.wordpress_outlined,
-          labelText: 'Function',
-        ),
-        CustomTextField(
-          fanction: email,
-          icon: Icons.email_outlined,
-          labelText: 'Email',
-        ),
-      ],
+    return Form(
+      key: formKey,
+      autovalidateMode: autovalidateMode,
+      child: Column(
+        children: [
+          CustomTextField(
+            onSaved: (value) {
+              name = value;
+            },
+            icon: Icons.person_3_outlined,
+            labelText: 'Name',
+          ),
+          CustomTextField(
+            onSaved: (value) {
+              phone = value;
+            },
+            icon: Icons.phone_enabled_outlined,
+            labelText: 'Phone',
+          ),
+          CustomTextField(
+            onSaved: (value) {
+              fanction = value;
+            },
+            icon: Icons.wordpress_outlined,
+            labelText: 'Function',
+          ),
+          CustomTextField(
+            onSaved: (value) {
+              email = value;
+            },
+            icon: Icons.email_outlined,
+            labelText: 'Email',
+          ),
+          EndAddMember(
+            onTapSave: () {
+              if (formKey.currentState!.validate()) {
+                formKey.currentState!.save();
+              } else {
+                autovalidateMode = AutovalidateMode.always;
+                setState(() {
+                  
+                });
+              }
+            },
+          )
+        ],
+      ),
     );
   }
 }
-

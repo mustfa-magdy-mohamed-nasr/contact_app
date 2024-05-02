@@ -5,26 +5,17 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class AddContactBody extends StatelessWidget {
-  AddContactBody({super.key});
-  TextEditingController title = TextEditingController();
-  TextEditingController fanction = TextEditingController();
-  TextEditingController phone = TextEditingController();
-  TextEditingController email = TextEditingController();
+  const AddContactBody({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: [
+      children: const [
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            const TopAddMember(),
-            CenterAddMember(
-                title: title, phone: phone, fanction: fanction, email: email),
-            const EndAddMember()
-          ],
+          children: [TopAddMember(), CenterAddMember(), EndAddMember()],
         ),
       ],
     );
   }
 }
-

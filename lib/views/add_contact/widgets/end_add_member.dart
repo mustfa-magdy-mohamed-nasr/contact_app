@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 
 class EndAddMember extends StatelessWidget {
   const EndAddMember({
-    super.key,
+    super.key, this.onTapSave,
   });
+  final void Function()? onTapSave;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +24,10 @@ class EndAddMember extends StatelessWidget {
             },
           ),
           CustomButtm(
+            
             color: Colors.blue,
             name: 'Save',
-            onTap: () {},
+            onTap: onTapSave,
           ),
         ],
       ),

@@ -8,22 +8,19 @@ class ContactView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => MemberCubit()..fetchAllMember(),
-      child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: Colors.blue,
-          onPressed: () {
-            Navigator.pushNamed(context, '/page1');
-          },
-          child: const Icon(
-            Icons.add,
-            color: Colors.white,
-          ),
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue,
+        onPressed: () {
+          Navigator.pushNamed(context, '/page1');
+        },
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
         ),
-        backgroundColor: const Color.fromARGB(255, 241, 239, 239),
-        body: const ContantViewBody(),
       ),
+      backgroundColor: const Color.fromARGB(255, 241, 239, 239),
+      body: const ContantViewBody(),
     );
   }
 }

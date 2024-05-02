@@ -1,4 +1,5 @@
 import 'package:contact_app/cubits/add_member_cubit/add_member_cubit.dart';
+import 'package:contact_app/cubits/member_cubit/member_cubit.dart';
 import 'package:contact_app/views/add_contact/widgets/center_add_member_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,9 +15,10 @@ class CenterAddMember extends StatelessWidget {
     return BlocConsumer<AddMemberCubit, AddMemberState>(
       listener: (context, state) {
         if (state is AddMemberFailuer) {
-          print("falier errrrrrrrrrrrrr${state.errMessadge}");
         }
         if (state is AddMemberSuccess) {
+                      BlocProvider.of<MemberCubit>(context).fetchAllMember();
+
           Navigator.pop(context);
         }
       },

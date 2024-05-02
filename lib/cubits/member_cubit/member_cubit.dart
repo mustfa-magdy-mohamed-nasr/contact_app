@@ -12,18 +12,6 @@ class MemberCubit extends Cubit<MemberState> {
   void fetchAllMember() {
     var contactBox = Hive.box<ContactModel>('contact');
     member = contactBox.values.toList();
+    emit(MemberSuccess());
   }
 }
-/**
- *     emit(MemberLoaded(member: member));
-part 'member_state.dart';
-
-class MemberCubit extends Cubit<MemberState> {
-  MemberCubit() : super(MemberInitial());
-  List<ContactModel>? member;
-  fetchAllMember() {
-    var contactBox = Hive.box<ContactModel>('contact');
-    member = contactBox.values.toList();
-  }
-}
- */

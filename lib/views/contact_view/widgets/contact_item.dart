@@ -1,5 +1,7 @@
+import 'package:contact_app/cubits/member_cubit/member_cubit.dart';
 import 'package:contact_app/model/contact_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
 class ContactItem extends StatelessWidget {
@@ -15,6 +17,7 @@ class ContactItem extends StatelessWidget {
         SlidableAction(
           onPressed: (context) {
             data.delete();
+            BlocProvider.of<MemberCubit>(context).fetchAllMember();
           },
           backgroundColor: Colors.red,
           icon: Icons.delete,

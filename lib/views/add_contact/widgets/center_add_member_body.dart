@@ -1,6 +1,9 @@
+import 'package:contact_app/cubits/add_member_cubit/add_member_cubit.dart';
+import 'package:contact_app/model/contact_model.dart';
 import 'package:contact_app/views/add_contact/widgets/custom_text_field.dart';
 import 'package:contact_app/views/add_contact/widgets/end_add_member.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CenterAddMemberBody extends StatefulWidget {
   const CenterAddMemberBody({
@@ -54,6 +57,13 @@ class _CenterAddMemberBodyState extends State<CenterAddMemberBody> {
             onTapSave: () {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
+                var contactModel = ContactModel(
+                    name: name!,
+                    phone: phone!,
+                    email: email!,
+                    fanction: fanction!);
+                BlocProvider.of<AddMemberCubit>(context)
+                    .addMember(contactModel);
               } else {
                 autovalidateMode = AutovalidateMode.always;
                 setState(() {});

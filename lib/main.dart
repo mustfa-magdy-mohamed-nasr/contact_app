@@ -1,3 +1,4 @@
+import 'package:contact_app/cubits/add_member_cubit/add_member_cubit.dart';
 import 'package:contact_app/model/contact_model.dart';
 import 'package:contact_app/simple_bloc_observer.dart';
 import 'package:contact_app/views/add_contact/add_member_view.dart';
@@ -10,8 +11,9 @@ import 'package:hive_flutter/adapters.dart';
 void main() async {
   Bloc.observer = SimpleObserver();
   await Hive.initFlutter();
-  await Hive.openBox('contact');
   Hive.registerAdapter(ContactModelAdapter());
+
+  await Hive.openBox<ContactModel>('contact');
   runApp(const ContactApp());
 }
 

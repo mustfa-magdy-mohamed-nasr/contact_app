@@ -1,3 +1,4 @@
+import 'package:contact_app/views/add_contact/widgets/center_add_member.dart';
 import 'package:contact_app/views/add_contact/widgets/center_add_member_body.dart';
 import 'package:contact_app/views/add_contact/widgets/top_add_member.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class AddContactBody extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             TopAddMember(),
-            CenterAddMemberBody(),
+            CenterAddMember(),
           ],
         ),
       ],

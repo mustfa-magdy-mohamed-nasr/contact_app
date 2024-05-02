@@ -9,13 +9,14 @@ class AddMemberCubit extends Cubit<AddMemberState> {
   AddMemberCubit() : super(AddMemberInitial());
 
   addMember(ContactModel member) async {
-    emit(addMember(member));
+    emit(AddMemberLoading());
     try {
       var contactBox = Hive.box<ContactModel>('contact');
-      emit(AddMemberSuccess());
       await contactBox.add(member);
+
+      emit(AddMemberSuccess());
     } catch (e) {
-      AddMemberFailuer(errMessadge: e.toString());
+      emit(AddMemberFailuer(errMessadge: e.toString()));
       // TODO
     }
   }

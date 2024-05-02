@@ -3,6 +3,7 @@ import 'package:contact_app/model/contact_model.dart';
 import 'package:contact_app/views/contact_view/widgets/contact_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class ContantListView extends StatelessWidget {
   const ContantListView({super.key});

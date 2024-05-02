@@ -403,6 +403,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.5"
+  modal_progress_hud_nsn:
+    dependency: "direct main"
+    description:
+      name: modal_progress_hud_nsn
+      sha256: "7d1b2eb50da63c994f8ec2da5738183dbc8235a528e840ecbf67439adb7a6cc2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.5.1"
   nested:
     dependency: transitive
     description:

@@ -1,67 +1,30 @@
-import 'package:contact_app/views/add_contact/widgets/custom_text_field.dart';
-import 'package:contact_app/views/add_contact/widgets/end_add_member.dart';
+import 'package:contact_app/cubits/add_member_cubit/add_member_cubit.dart';
+import 'package:contact_app/views/add_contact/widgets/center_add_member_body.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
-class CenterAddMember extends StatefulWidget {
+class CenterAddMember extends StatelessWidget {
   const CenterAddMember({
     super.key,
   });
 
   @override
-  State<CenterAddMember> createState() => _CenterAddMemberState();
-}
-
-class _CenterAddMemberState extends State<CenterAddMember> {
-  final GlobalKey<FormState> formKey = GlobalKey();
-  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  String? name, email, fanction, phone;
-  @override
   Widget build(BuildContext context) {
-    return Form(
-      key: formKey,
-      autovalidateMode: autovalidateMode,
-      child: Column(
-        children: [
-          CustomTextField(
-            onSaved: (value) {
-              name = value;
-            },
-            icon: Icons.person_3_outlined,
-            labelText: 'Name',
-          ),
-          CustomTextField(
-            onSaved: (value) {
-              phone = value;
-            },
-            icon: Icons.phone_enabled_outlined,
-            labelText: 'Phone',
-          ),
-          CustomTextField(
-            onSaved: (value) {
-              fanction = value;
-            },
-            icon: Icons.wordpress_outlined,
-            labelText: 'Function',
-          ),
-          CustomTextField(
-            onSaved: (value) {
-              email = value;
-            },
-            icon: Icons.email_outlined,
-            labelText: 'Email',
-          ),
-          EndAddMember(
-            onTapSave: () {
-              if (formKey.currentState!.validate()) {
-                formKey.currentState!.save();
-              } else {
-                autovalidateMode = AutovalidateMode.always;
-                setState(() {});
-              }
-            },
-          )
-        ],
-      ),
+    return BlocConsumer<AddMemberCubit, AddMemberState>(
+      listener: (context, state) {
+        if (state is AddMemberFailuer) {
+          print("falier${state.errMessadge}");
+        }
+        if (state is AddMemberSuccess) {
+          Navigator.pop(context);
+        }
+      },
+      builder: (context, state) {
+        return ModalProgressHUD(
+            inAsyncCall: state is AddMemberLoading ? true : false,
+            child: const CenterAddMemberBody());
+      },
     );
   }
 }

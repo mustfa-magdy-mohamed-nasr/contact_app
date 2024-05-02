@@ -34,6 +34,7 @@ dependencies:
   flutter_bloc: ^8.1.5
   hive: ^2.2.3
   hive_flutter: ^1.1.0
+  modal_progress_hud_nsn: ^0.5.1
 
 dev_dependencies:
   build_runner: ^2.4.9

@@ -10,7 +10,7 @@ final class MemberLodeing extends MemberState {}
 final class MemberSuccess extends MemberState {
   final List<ContactModel> member;
 
-  MemberSuccess({required this.member});
+  MemberSuccess({this.member = const []});
 }
 
 final class MemberFailuer extends MemberState {

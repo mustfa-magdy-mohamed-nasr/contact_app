@@ -1,4 +1,5 @@
 import 'package:contact_app/cubits/add_member_cubit/add_member_cubit.dart';
+import 'package:contact_app/cubits/member_cubit/member_cubit.dart';
 import 'package:contact_app/model/contact_model.dart';
 import 'package:contact_app/simple_bloc_observer.dart';
 import 'package:contact_app/views/add_contact/add_member_view.dart';
@@ -23,16 +24,21 @@ class ContactApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      // theme: ThemeData.dark(),
-      title: 'Contact App',
-      initialRoute: '/',
-      routes: {
-        '/': (context) => const ContactView(),
-        '/page1': (context) => const AddMemberView(),
-        '/page2': (context) => const DetalisView(),
-        // '/page2': (context) => Page2(),
-      },
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => MemberCubit()),
+      ],
+      child: MaterialApp(
+        // theme: ThemeData.dark(),
+        title: 'Contact App',
+        initialRoute: '/',
+        routes: {
+          '/': (context) => const ContactView(),
+          '/page1': (context) => const AddMemberView(),
+          '/page2': (context) => const DetalisView(),
+          // '/page2': (context) => Page2(),
+        },
+      ),
     );
   }
 }

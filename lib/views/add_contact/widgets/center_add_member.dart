@@ -56,9 +56,7 @@ class _CenterAddMemberState extends State<CenterAddMember> {
                 formKey.currentState!.save();
               } else {
                 autovalidateMode = AutovalidateMode.always;
-                setState(() {
-                  
-                });
+                setState(() {});
               }
             },
           )

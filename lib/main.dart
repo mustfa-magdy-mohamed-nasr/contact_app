@@ -1,7 +1,6 @@
-import 'package:contact_app/views/add_contact/add_contact.dart';
+import 'package:contact_app/views/add_contact/add_member_view.dart';
 import 'package:contact_app/views/contact_view/contactView.dart';
 import 'package:contact_app/views/dwtails_view/detalis_view.dart';
-import 'package:contact_app/views/dwtails_view/widgets/details_view_body.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -20,7 +19,7 @@ class ContactApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const ContactView(),
-        '/page1': (context) => AddContact(),
+        '/page1': (context) => AddMemberView(),
         '/page2': (context) => const DetalisView(),
         // '/page2': (context) => Page2(),
       },

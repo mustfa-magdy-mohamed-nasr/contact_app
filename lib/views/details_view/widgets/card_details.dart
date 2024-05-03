@@ -1,10 +1,13 @@
-import 'package:contact_app/views/dwtails_view/widgets/custom_listTile_details.dart';
+import 'package:contact_app/model/contact_model.dart';
+import 'package:contact_app/views/details_view/widgets/custom_listTile_details.dart';
 import 'package:flutter/material.dart';
 
 class CardDetails extends StatelessWidget {
   const CardDetails({
     super.key,
+    required this.member,
   });
+  final ContactModel member;
 
   @override
   Widget build(BuildContext context) {
@@ -21,46 +24,47 @@ class CardDetails extends StatelessWidget {
                     topLeft: Radius.circular(30),
                     topRight: Radius.circular(30)),
                 color: Colors.white),
-            child: const Column(
+            child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 20.0),
+                  padding: const EdgeInsets.only(top: 20.0),
                   child: Text(
-                    'Ebrahhime Elgitany',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                    member.name,
+                    style: const TextStyle(
+                        fontSize: 24, fontWeight: FontWeight.bold),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 CustomListTileDetails(
-                  contanerColora: Color(0xffEAF2FF),
+                  contanerColora: const Color(0xffEAF2FF),
                   title: 'Phone Namber ',
-                  fanction: '01093301415',
+                  fanction: member.phone,
                   icon: Icons.phone,
-                  iconColore: Color(0xff5699ff),
+                  iconColore: const Color(0xff5699ff),
                 ),
-                Divider(
+                const Divider(
                   endIndent: 15,
                   indent: 15,
                 ),
                 CustomListTileDetails(
-                  contanerColora: Color(0xffFFEEEF),
+                  contanerColora: const Color(0xffFFEEEF),
                   title: 'Email ',
-                  fanction: 'ebrahhimeElgitany@gmail.com',
+                  fanction: member.email,
                   icon: Icons.email_outlined,
-                  iconColore: Color(0xffFF5969),
+                  iconColore: const Color(0xffFF5969),
                 ),
-                Divider(
+                const Divider(
                   endIndent: 15,
                   indent: 15,
                 ),
                 CustomListTileDetails(
-                  contanerColora: Color(0xffE9FAEF),
+                  contanerColora: const Color(0xffE9FAEF),
                   title: 'Fanction ',
-                  fanction: 'Member',
+                  fanction: member.fanction,
                   icon: Icons.wordpress,
-                  iconColore: Color(0xff29c763),
+                  iconColore: const Color(0xff29c763),
                 ),
               ],
             ),

@@ -4,7 +4,8 @@ class CustomTextField extends StatelessWidget {
   const CustomTextField({
     super.key,
     required this.icon,
-    required this.labelText, this.onSaved,
+    required this.labelText,
+    this.onSaved,
   });
 
   final IconData icon;

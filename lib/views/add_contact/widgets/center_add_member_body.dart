@@ -54,7 +54,7 @@ class _CenterAddMemberBodyState extends State<CenterAddMemberBody> {
             labelText: 'Email',
           ),
           EndAddMember(
-            onTapSave: () {
+            onTap: () {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
                 var contactModel = ContactModel(

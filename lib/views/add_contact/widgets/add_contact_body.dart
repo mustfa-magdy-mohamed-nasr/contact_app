@@ -14,7 +14,7 @@ class AddContactBody extends StatelessWidget {
         Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            TopAddMember(),
+            AddImage(),
             CenterAddMember(),
           ],
         ),
@@ -22,5 +22,3 @@ class AddContactBody extends StatelessWidget {
     );
   }
 }
-
-

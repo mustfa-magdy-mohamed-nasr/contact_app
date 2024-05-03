@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TopAddMember extends StatelessWidget {
-  const TopAddMember({
+class AddImage extends StatelessWidget {
+  const AddImage({
     super.key,
   });
 

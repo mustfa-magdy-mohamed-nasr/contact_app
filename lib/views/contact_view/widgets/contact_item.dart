@@ -1,5 +1,7 @@
 import 'package:contact_app/cubits/member_cubit/member_cubit.dart';
 import 'package:contact_app/model/contact_model.dart';
+import 'package:contact_app/views/details_view/detalis_view.dart';
+import 'package:contact_app/views/edit_view/edit_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
@@ -23,10 +25,28 @@ class ContactItem extends StatelessWidget {
           icon: Icons.delete,
           label: 'delete',
         ),
+        // SlidableAction(
+        //   onPressed: (context) {
+        //     Navigator.push(
+        //         context,
+        //         MaterialPageRoute(
+        //             builder: (context) => EditView(
+        //                   member: data,
+        //                 )));
+        //   },
+        //   backgroundColor: const Color.fromARGB(255, 2, 71, 105),
+        //   icon: Icons.edit_note_outlined,
+        //   label: 'edit',
+        // ),
       ]),
       child: GestureDetector(
         onTap: () {
-          Navigator.pushNamed(context, '/page2');
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => DetalisView(
+                        member: data,
+                      )));
         },
         child: ListTile(
           leading: Container(
@@ -52,17 +72,3 @@ class ContactItem extends StatelessWidget {
     );
   }
 }
-/**
- *  Slidable(
-              endActionPane:
-                  ActionPane(motion:  StretchMotion(), children: [
-                SlidableAction(
-                  onPressed: (context) {
-                    // member.dleat()
-                  },
-                  backgroundColor: Colors.red,
-                  icon: Icons.delete,
-                  label: 'delete',
-                ),
-              ]),
- */

@@ -7,9 +7,12 @@ class EditView extends StatelessWidget {
   final ContactModel member;
   @override
   Widget build(BuildContext context) {
-    return  SafeArea(
+    return SafeArea(
         child: Scaffold(
-      body: EditViewBody(member:member ,),
+      resizeToAvoidBottomInset: true,
+      body: EditViewBody(
+        member: member,
+      ),
     ));
   }
 }

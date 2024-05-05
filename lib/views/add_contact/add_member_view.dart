@@ -10,8 +10,11 @@ class AddMemberView extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AddMemberCubit(),
-      child: const Scaffold(
-        body: AddContactBody(),
+      child: const SafeArea(
+        child: Scaffold(
+          resizeToAvoidBottomInset: true,
+          body: AddContactBody(),
+        ),
       ),
     );
   }

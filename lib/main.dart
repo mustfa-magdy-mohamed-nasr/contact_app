@@ -29,6 +29,7 @@ class ContactApp extends StatelessWidget {
     return BlocProvider(
       create: (context) => MemberCubit()..fetchAllMember(),
       child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
         // theme: ThemeData.dark(),
         home: ContactView(),
         // initialRoute: '/',

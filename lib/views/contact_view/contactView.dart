@@ -9,20 +9,22 @@ class ContactView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blue,
-        onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => const AddMemberView()));
-        },
-        child: const Icon(
-          Icons.add,
-          color: Colors.white,
+    return SafeArea(
+      child: Scaffold(
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.blue,
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const AddMemberView()));
+          },
+          child: const Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
         ),
+        backgroundColor: const Color.fromARGB(255, 241, 239, 239),
+        body: const ContantViewBody(),
       ),
-      backgroundColor: const Color.fromARGB(255, 241, 239, 239),
-      body: const ContantViewBody(),
     );
   }
 }

@@ -8,16 +8,24 @@ part 'add_member_state.dart';
 class AddMemberCubit extends Cubit<AddMemberState> {
   AddMemberCubit() : super(AddMemberInitial());
 
-  addMember(ContactModel member) async {
+  addMember({required ContactModel member, String? imagePath}) async {
     emit(AddMemberLoading());
     try {
       var contactBox = Hive.box<ContactModel>('contact');
-      await contactBox.add(member);
+
+      var updatedMember = ContactModel(
+        name: member.name,
+        phone: member.phone,
+        email: member.email,
+        fanction: member.fanction,
+        imagePath: imagePath, // تحديث مسار الصورة
+      );
+
+      await contactBox.add(updatedMember);
 
       emit(AddMemberSuccess());
     } catch (e) {
       emit(AddMemberFailuer(errMessadge: e.toString()));
-      // TODO
     }
   }
 }

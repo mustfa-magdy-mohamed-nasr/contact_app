@@ -1,7 +1,9 @@
 import 'package:contact_app/cubits/add_member_cubit/add_member_cubit.dart';
+import 'package:contact_app/cubits/member_cubit/member_cubit.dart';
 import 'package:contact_app/model/contact_model.dart';
 import 'package:contact_app/views/add_contact/widgets/custom_text_field.dart';
 import 'package:contact_app/views/add_contact/widgets/end_add_member.dart';
+import 'package:contact_app/views/add_contact/widgets/add_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,7 +19,14 @@ class CenterAddMemberBody extends StatefulWidget {
 class _CenterAddMemberBodyState extends State<CenterAddMemberBody> {
   final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  String? name, email, fanction, phone;
+  String? name, email, fanction, phone, _imagePath;
+
+  void onImageSelected(String imagePath) {
+    setState(() {
+      _imagePath = imagePath;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -25,6 +34,13 @@ class _CenterAddMemberBodyState extends State<CenterAddMemberBody> {
       autovalidateMode: autovalidateMode,
       child: Column(
         children: [
+          AddImage(
+            onImageSelected: (String imagePath) {
+              setState(() {
+                _imagePath = imagePath;
+              });
+            },
+          ),
           CustomTextField(
             onSaved: (value) {
               name = value;
@@ -53,23 +69,31 @@ class _CenterAddMemberBodyState extends State<CenterAddMemberBody> {
             icon: Icons.email_outlined,
             labelText: 'Email',
           ),
+          // AddImage(onImageSelected: onImageSelected), // إضافة AddImage هنا
           EndAddMember(
             onTap: () {
               if (formKey.currentState!.validate()) {
                 formKey.currentState!.save();
                 var contactModel = ContactModel(
-                    name: name!,
-                    phone: phone!,
-                    email: email!,
-                    fanction: fanction!);
-                BlocProvider.of<AddMemberCubit>(context)
-                    .addMember(contactModel);
+                  name: name!,
+                  phone: phone!,
+                  email: email!,
+                  fanction: fanction!,
+                );
+                BlocProvider.of<AddMemberCubit>(context).addMember(
+                  member: contactModel, // تمرير الشخص الجديد كمعامل 'member'
+                  imagePath: _imagePath, // تمرير مسار الصورة
+                );
+                              BlocProvider.of<MemberCubit>(context).fetchAllMember();
+
+                Navigator.pop(context);
               } else {
-                autovalidateMode = AutovalidateMode.always;
-                setState(() {});
+                setState(() {
+                  autovalidateMode = AutovalidateMode.always;
+                });
               }
             },
-          )
+          ),
         ],
       ),
     );

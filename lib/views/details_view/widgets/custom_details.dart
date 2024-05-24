@@ -14,25 +14,34 @@ class CustomBarDetails extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back,
-              color: Colors.white,
-            )),
-        IconButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => EditView(member: member)));
-            },
-            icon: const Icon(
-              Icons.edit_note_sharp,
-              color: Colors.white,
-            )),
+        Card(
+          color: const Color(0xff979EAB),
+          child: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(
+                Icons.arrow_back,
+                // color: Colors.white,
+              )),
+        ),
+        Card(
+          color: const Color(0xff979EAB),
+          // shape: RoundedRectangleBorder(
+          //   borderRadius: BorderRadius.circular(36),
+          // ),
+          child: IconButton(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => EditView(member: member)));
+              },
+              icon: const Icon(
+                Icons.edit_note_sharp,
+                // color: Colors.white,
+              )),
+        ),
       ],
     );
   }

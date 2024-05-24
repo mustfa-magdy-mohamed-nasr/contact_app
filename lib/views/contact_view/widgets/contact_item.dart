@@ -54,32 +54,40 @@ class ContactItem extends StatelessWidget {
                         member: data,
                       )));
         },
-         child: ListTile(
-          leading: Container(
-            width: 60,
-            height: 60,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(16),
-              image: data.imagePath != null && File(data.imagePath!).existsSync()
-                  ? DecorationImage(
-                      image: FileImage(File(data.imagePath!)),
-                      fit: BoxFit.cover,
-                    )
-                  : null,
-              color: data.imagePath == null || !File(data.imagePath!).existsSync()
-                  ? Colors.grey
-                  : null, // لون بديل إذا لم يكن هناك صورة
+        child: Card(
+          child: ListTile(
+            leading: Container(
+              width: 100, // Adjust the width as needed
+              height: 100, // Adjust the height as needed
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                image:
+                    data.imagePath != null && File(data.imagePath!).existsSync()
+                        ? DecorationImage(
+                            image: FileImage(File(data.imagePath!)),
+                            fit: BoxFit.cover,
+                          )
+                        : null,
+                color: data.imagePath == null ||
+                        !File(data.imagePath!).existsSync()
+                    ? Colors.grey
+                    : null,
+              ),
             ),
-          ),
-          title: Text(data.name),
-          titleTextStyle: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 18,
-            color: Colors.black,
-          ),
-          subtitle: Text(
-            data.fanction,
-            style: const TextStyle(color: Colors.grey, inherit: false),
+            title: Text(
+              data.name,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+                color: Colors.black,
+              ),
+            ),
+            subtitle: Text(
+              data.fanction,
+              style: const TextStyle(
+                color: Colors.grey,
+              ),
+            ),
           ),
         ),
       ),

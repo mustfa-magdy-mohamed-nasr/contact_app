@@ -21,13 +21,14 @@ class ContactModelAdapter extends TypeAdapter<ContactModel> {
       phone: fields[1] as String,
       email: fields[2] as String,
       fanction: fields[3] as String,
+      imagePath: fields[4] as String?, // تحديث لقراءة imagePath
     );
   }
 
   @override
   void write(BinaryWriter writer, ContactModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5) // تحديث العدد الإجمالي لحقول الكتابة
       ..writeByte(0)
       ..write(obj.name)
       ..writeByte(1)
@@ -35,7 +36,9 @@ class ContactModelAdapter extends TypeAdapter<ContactModel> {
       ..writeByte(2)
       ..write(obj.email)
       ..writeByte(3)
-      ..write(obj.fanction);
+      ..write(obj.fanction)
+      ..writeByte(4) // تحديث لكتابة imagePath
+      ..write(obj.imagePath);
   }
 
   @override

@@ -1,32 +1,45 @@
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({
-    super.key,
-  });
+  const CustomAppBar({super.key});
+
+  Color _getColorForIndex(int index) {
+    List<Color> colors = [
+      Colors.red,
+      Colors.blue,
+      Colors.green,
+      Colors.orange,
+      Colors.purple,
+      const Color.fromARGB(255, 150, 137, 20),
+      Colors.teal,
+      Colors.pink,
+      Colors.indigo,
+      Colors.cyan,
+    ];
+
+    return colors[index % colors.length];
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(
-          Icons.short_text_outlined,
-          color: Colors.blue,
+        RichText(
+          text: TextSpan(
+            children: [
+              for (int i = 0; i < 'El Fasafees'.length; i++)
+                TextSpan(
+                  text: 'El Fasafees'[i],
+                  style: TextStyle(
+                    color: _getColorForIndex(i),
+                    fontWeight: FontWeight.w900,
+                    fontSize: 34,
+                  ),
+                ),
+            ],
+          ),
         ),
-        Spacer(
-          flex: 1,
-        ),
-        Text(
-          'El Fasafees',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
-        ),
-        Spacer(
-          flex: 1,
-        ),
-        Icon(
-          Icons.search,
-          color: Colors.blue,
-        )
       ],
     );
   }

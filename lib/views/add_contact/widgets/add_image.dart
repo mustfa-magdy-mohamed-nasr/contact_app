@@ -28,7 +28,7 @@ class _AddImageState extends State<AddImage> {
 
   Future<void> _getImageFromGallery() async {
     final XFile? pickedFile =
-        await ImagePicker().pickImage(source: ImageSource.camera);
+        await ImagePicker().pickImage(source: ImageSource.gallery);
 
     if (pickedFile != null) {
       setState(() {
@@ -42,25 +42,93 @@ class _AddImageState extends State<AddImage> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        _getImageFromGallery();
+        _showImagePickerOptions();
       },
       child: Padding(
         padding: const EdgeInsets.all(30),
-        child: Container(
-          width: 150,
-          height: 150,
-          decoration: BoxDecoration(
-            color: Colors.black,
-            image: _currentImagePath != null
-                ? DecorationImage(
-                    image: FileImage(File(_currentImagePath!)),
-                    fit: BoxFit.cover,
-                  )
-                : null,
-            borderRadius: BorderRadius.circular(300),
-          ),
+        child: Stack(
+          clipBehavior: Clip.none,
+          children: [
+            Container(
+              width: 150,
+              height: 150,
+              decoration: BoxDecoration(
+                color: Colors.black,
+                image: DecorationImage(
+                  image: _currentImagePath != null
+                      ? FileImage(File(_currentImagePath!))
+                      : const AssetImage('assets/avater.webp')
+                          as ImageProvider<Object>, // Explicit cast
+                  fit: BoxFit.cover,
+                ),
+                borderRadius: BorderRadius.circular(300),
+              ),
+            ),
+            Positioned(
+              bottom: -10,
+              right: 0,
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.green,
+                    borderRadius: BorderRadius.circular(34)),
+                child: IconButton(
+                  onPressed: () {
+                    _showImagePickerOptions();
+                  },
+                  icon: const Icon(
+                    Icons.camera_alt,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
+  }
+
+  void _showImagePickerOptions() {
+    showModalBottomSheet<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return SizedBox(
+          height: 150,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              ListTile(
+                leading: const Icon(Icons.photo_library),
+                title: const Text('Select from gallery'),
+                onTap: () {
+                  Navigator.pop(context);
+                  _getImageFromGallery();
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.camera_alt),
+                title: const Text('Take a picture'),
+                onTap: () {
+                  Navigator.pop(context);
+                  _getImageFromCamera();
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> _getImageFromCamera() async {
+    final XFile? pickedFile =
+        await ImagePicker().pickImage(source: ImageSource.camera);
+
+    if (pickedFile != null) {
+      setState(() {
+        _currentImagePath = pickedFile.path;
+      });
+      widget.onImageSelected(pickedFile.path);
+    }
   }
 }

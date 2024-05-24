@@ -12,6 +12,20 @@ class ImageDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return TweenAnimationBuilder(
+      key: UniqueKey(),
+      tween: Tween<double>(end: 420, begin: 700),
+      duration: const Duration(milliseconds: 400),
+      builder: (context, value, child) {
+        return SizedBox(
+            width: MediaQuery.of(context).size.width,
+            height: value,
+            child: _contaner());
+      },
+    );
+  }
+
+  Widget _contaner() {
     return Container(
       width: double.infinity,
       height: 400,

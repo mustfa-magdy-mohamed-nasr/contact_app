@@ -14,9 +14,8 @@ class CardDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     return TweenAnimationBuilder(
       key: UniqueKey(),
-      tween:
-          Tween<double>(end: 420, begin: 100), 
-      duration: const Duration(milliseconds: 500),
+      tween: Tween<double>(end: 420, begin: 100),
+      duration: const Duration(milliseconds: 400),
       builder: (context, value, child) {
         return SizedBox(
           width: MediaQuery.of(context).size.width,

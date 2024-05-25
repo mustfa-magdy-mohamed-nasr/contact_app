@@ -18,13 +18,8 @@ class ContantListView extends StatelessWidget {
         return ListView.builder(
           itemCount: member.length,
           itemBuilder: (BuildContext context, int index) {
-            return Column(
-              children: [
-                // AddImage(imagePath: member[index].imagePath), // استخدام العرض الجديد لعرض الصورة
-                ContactItem(
-                  data: member[index],
-                ),
-              ],
+            return ContactItem(
+              data: member[index],
             );
           },
         );

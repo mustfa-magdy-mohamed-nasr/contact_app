@@ -12,8 +12,12 @@ class DetailsViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-         ImageDetails(member: member,),
-         CustomBarDetails(member: member,),
+        ImageDetails(
+          member: member,
+        ),
+        CustomBarDetails(
+          member: member,
+        ),
         Align(
           alignment: Alignment.bottomCenter,
           child: CardDetails(

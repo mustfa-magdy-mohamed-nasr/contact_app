@@ -19,14 +19,14 @@ class EndAddMember extends StatelessWidget {
         children: [
           CustomButtm(
             color: Colors.red,
-            name: 'Cansel',
+            name: 'لا ياعم',
             onTap: () {
               Navigator.pop(context);
             },
           ),
           CustomButtm(
             color: Colors.blue,
-            name: 'Save',
+            name: 'أضافه فُسْفُوس',
             onTap: onTap,
           ),
         ],

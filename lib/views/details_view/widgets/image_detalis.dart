@@ -12,16 +12,19 @@ class ImageDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TweenAnimationBuilder(
-      key: UniqueKey(),
-      tween: Tween<double>(end: 420, begin: 600),
-      duration: const Duration(milliseconds: 400),
-      builder: (context, value, child) {
-        return SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: value,
-            child: _contaner());
-      },
+    return Hero(
+      tag: "bd${member.imagePath}",
+      child: TweenAnimationBuilder(
+        key: UniqueKey(),
+        tween: Tween<double>(end: 420, begin: 600),
+        duration: const Duration(milliseconds: 1000),
+        builder: (context, value, child) {
+          return SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: value,
+              child: _contaner());
+        },
+      ),
     );
   }
 
@@ -39,7 +42,7 @@ class ImageDetails extends StatelessWidget {
             : null,
         color: member.imagePath == null || !File(member.imagePath!).existsSync()
             ? Colors.grey
-            : null, 
+            : null,
       ),
     );
   }

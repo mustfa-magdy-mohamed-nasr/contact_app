@@ -15,7 +15,7 @@ class CardDetails extends StatelessWidget {
     return TweenAnimationBuilder(
       key: UniqueKey(),
       tween: Tween<double>(end: 420, begin: 100),
-      duration: const Duration(milliseconds: 400),
+      duration: const Duration(milliseconds: 900),
       builder: (context, value, child) {
         return SizedBox(
           width: MediaQuery.of(context).size.width,
@@ -29,7 +29,6 @@ class CardDetails extends StatelessWidget {
               color: Colors.grey[100],
             ),
             child: SingleChildScrollView(
-              // Wrap with SingleChildScrollView
               child: _customColumn(),
             ),
           ),
@@ -42,7 +41,7 @@ class CardDetails extends StatelessWidget {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.only(top: 20.0),
+          padding: const EdgeInsets.symmetric(vertical: 20.0),
           child: Text(
             member.name,
             style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -51,7 +50,7 @@ class CardDetails extends StatelessWidget {
         const SizedBox(height: 50),
         CustomListTileDetails(
           contanerColora: const Color(0xffEAF2FF),
-          title: 'Phone Number',
+          title: 'التليفون',
           fanction: member.phone,
           icon: Icons.phone,
           iconColore: const Color(0xff5699ff),
@@ -59,7 +58,7 @@ class CardDetails extends StatelessWidget {
         const Divider(endIndent: 15, indent: 15),
         CustomListTileDetails(
           contanerColora: const Color(0xffFFEEEF),
-          title: 'Email',
+          title: 'الاميل',
           fanction: member.email,
           icon: Icons.email_outlined,
           iconColore: const Color(0xffFF5969),
@@ -67,9 +66,9 @@ class CardDetails extends StatelessWidget {
         const Divider(endIndent: 15, indent: 15),
         CustomListTileDetails(
           contanerColora: const Color(0xffE9FAEF),
-          title: 'Function',
+          title: 'وظيفه الفُسْفُوس',
           fanction: member.fanction,
-          icon: Icons.work,
+          icon: Icons.workspace_premium_outlined,
           iconColore: const Color(0xff29c763),
         ),
       ],

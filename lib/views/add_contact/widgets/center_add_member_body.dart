@@ -46,28 +46,29 @@ class _CenterAddMemberBodyState extends State<CenterAddMemberBody> {
               name = value;
             },
             icon: Icons.person_3_outlined,
-            labelText: 'Name',
+            labelText: 'اسم الفُسْفُوس',
           ),
           CustomTextField(
+            isNumeric: true,
             onSaved: (value) {
               phone = value;
             },
             icon: Icons.phone_enabled_outlined,
-            labelText: 'Phone',
+            labelText: 'التليفون',
           ),
           CustomTextField(
             onSaved: (value) {
               fanction = value;
             },
-            icon: Icons.wordpress_outlined,
-            labelText: 'Function',
+            icon: Icons.workspace_premium_outlined,
+            labelText: 'وظيفة  الفُسْفُوس',
           ),
           CustomTextField(
             onSaved: (value) {
               email = value;
             },
             icon: Icons.email_outlined,
-            labelText: 'Email',
+            labelText: 'الاميل',
           ),
           // AddImage(onImageSelected: onImageSelected), // إضافة AddImage هنا
           EndAddMember(
@@ -84,7 +85,7 @@ class _CenterAddMemberBodyState extends State<CenterAddMemberBody> {
                   member: contactModel, // تمرير الشخص الجديد كمعامل 'member'
                   imagePath: _imagePath, // تمرير مسار الصورة
                 );
-                              BlocProvider.of<MemberCubit>(context).fetchAllMember();
+                BlocProvider.of<MemberCubit>(context).fetchAllMember();
 
                 Navigator.pop(context);
               } else {

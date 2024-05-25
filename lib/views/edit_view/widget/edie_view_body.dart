@@ -18,6 +18,7 @@ class EditViewBody extends StatelessWidget {
               CrossAxisAlignment.center, // Aligns children to the start
           children: [
             AddImage(
+              imagePath: member.imagePath,
               onImageSelected: (String imagePath) {
                 member.imagePath = imagePath;
               },

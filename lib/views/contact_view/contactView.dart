@@ -1,8 +1,6 @@
-import 'package:contact_app/cubits/member_cubit/member_cubit.dart';
 import 'package:contact_app/views/add_contact/add_member_view.dart';
 import 'package:contact_app/views/contact_view/widgets/contant_view_body.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ContactView extends StatelessWidget {
   const ContactView({super.key});

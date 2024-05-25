@@ -12,8 +12,8 @@ class CustomButtm extends StatelessWidget {
       onTap: onTap,
       child: Container(
         alignment: Alignment.center,
-        width: 100,
-        height: 40,
+        width: 120,
+        height: 50,
         decoration: BoxDecoration(
             color: color, borderRadius: BorderRadius.circular(18)),
         child: Text(

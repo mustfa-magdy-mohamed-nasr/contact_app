@@ -99,7 +99,7 @@ class _AddImageState extends State<AddImage> {
             children: <Widget>[
               ListTile(
                 leading: const Icon(Icons.photo_library),
-                title: const Text('Select from gallery'),
+                title: const Text('اختر من المعرض'),
                 onTap: () {
                   Navigator.pop(context);
                   _getImageFromGallery();
@@ -107,7 +107,7 @@ class _AddImageState extends State<AddImage> {
               ),
               ListTile(
                 leading: const Icon(Icons.camera_alt),
-                title: const Text('Take a picture'),
+                title: const Text('التقط صورة من الكاميرا'),
                 onTap: () {
                   Navigator.pop(context);
                   _getImageFromCamera();
